@@ -4,10 +4,12 @@ import HomeMenu from './HomeMenu/HomeMenu'
 import { useSelector, useDispatch } from 'react-redux'
 import MultipleRowSlick from '../../Components/RSlick/MultipleRowSlick';
 import { layDanhSachPhimAction } from '../../Redux/actions/QuanLyPhimAction';
+import { layDanhSachHeThongRapAction } from '../../Redux/actions/QuanLyRapAction';
 
 export default function Home(props) {
 
     const { arrFilm } = useSelector(state => state.QuanLyPhimReducer);
+    const { heThongRapChieu } = useSelector(state => state.QuanLyRapReducer);
     const dispatch = useDispatch();
     console.log("propsHome", arrFilm);
 
@@ -21,6 +23,8 @@ export default function Home(props) {
     useEffect(() => {
         const action = layDanhSachPhimAction();
         dispatch(action); // dispatch function từ thunk
+
+        dispatch(layDanhSachHeThongRapAction());
     }, []);
 
     return (
@@ -34,7 +38,7 @@ export default function Home(props) {
                 </div>
             </section>
 
-            <HomeMenu />
+            <HomeMenu heThongRapChieu={heThongRapChieu} />
         </div>
     )
 }
