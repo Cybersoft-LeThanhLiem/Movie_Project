@@ -8,6 +8,10 @@ import News from './Pages/News/News';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import Detail from './Pages/Detail/Detail';
+import  CheckoutTemplate  from './Templates/CheckoutTemplate/CheckoutTemplate';
+import Checkout from './Pages/Checkout/Checkout';
+import { Suspense, lazy } from 'react'
+import { UserTemplate } from './Templates/UserTemplate/UserTemplate';
 
 export const history = createBrowserHistory();
 
@@ -21,7 +25,9 @@ function App() {
         <HomeTemplate path="/" exact Component={Home} />
 
         <HomeTemplate path="/detail/:id" exact Component={Detail} />
-        <Route path="/login" exact component={Login} />
+        <CheckoutTemplate path="/checkout/:id" exact component={Checkout} />
+
+        <UserTemplate path="/login" exact Component={Login} />
         <Route path="/register" exact component={Register} />
       </Switch>
     </Router>
