@@ -1,5 +1,6 @@
 import { quanLyNguoiDungService } from "../../Services/QuanLyNguoiDungService"
 import { DANG_NHAP_ACTION } from "./types/QuanLyNguoiDungType";
+import {history} from '../../App'
 
 export const dangNhapAction = (thongTinDangNhap) => {
     return async (dispatch) => {
@@ -9,7 +10,8 @@ export const dangNhapAction = (thongTinDangNhap) => {
                 dispatch({
                     type: DANG_NHAP_ACTION,
                     thongTinDangNhap: result.data.content
-                })
+                });
+                history.goBack();
             }
             console.log('result', result);
 
